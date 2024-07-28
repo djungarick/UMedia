@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.Result.AspNetCore" Version="9.1.0" />
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UMedia.Application\UMedia.Application.csproj" />
+    <ProjectReference Include="..\UMedia.Infrastructure\UMedia.Infrastructure.csproj" />
+    <ProjectReference Include="..\UMedia.Persistence\UMedia.Persistence.csproj" />
+    <ProjectReference Include="..\UMedia.WebAPI.Contract\UMedia.WebAPI.Contract.csproj" />
   </ItemGroup>
 
 </Project>

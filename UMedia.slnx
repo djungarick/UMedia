@@ -1,0 +1,28 @@
+<Solution>
+  <Folder Name="/Tests/Server/">
+    <Project Path="UMedia.UnitTests\UMedia.UnitTests.csproj" />
+  </Folder>
+  <Folder Name="/Tests/" />
+  <Folder Name="/Source/Server/Presentation/">
+    <Project Path="UMedia.WebAPI.Contract\UMedia.WebAPI.Contract.csproj" />
+    <Project Path="UMedia.WebAPI\UMedia.WebAPI.csproj" />
+  </Folder>
+  <Folder Name="/Source/Server/Infrastructure/">
+    <Project Path="UMedia.Infrastructure\UMedia.Infrastructure.csproj" />
+    <Project Path="UMedia.Persistence\UMedia.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Source/Server/Core/">
+    <Project Path="UMedia.Application\UMedia.Application.csproj" />
+    <Project Path="UMedia.Domain\UMedia.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Source/Server/" />
+  <Folder Name="/Source/Client/">
+    <Project Path="UMedia.Client\UMedia.Client.csproj" />
+  </Folder>
+  <Folder Name="/Source/" />
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+</Solution>
