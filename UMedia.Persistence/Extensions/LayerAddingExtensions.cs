@@ -5,7 +5,7 @@ namespace UMedia.Persistence.Extensions;
 public static class LayerAddingExtensions
 {
     public static IServiceCollection AddUMediaPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
-        => services.AddDbContextPool<UMediaDbContext>(options
+        => services.AddDbContext<UMediaDbContext>(options
             => options.UseNpgsql(
                 Guard.Against.Null(
                     configuration.GetConnectionString(

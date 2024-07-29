@@ -6,6 +6,9 @@ internal sealed class WorkspaceEntityTypeConfiguration : IEntityTypeConfiguratio
 {
     public void Configure(EntityTypeBuilder<Workspace> builder)
     {
+        builder.Property(_ => _.Id)
+            .UseSerialColumn();
+
         builder.Property(static _ => _.Name)
             .HasMaxLength(CommonNameConstraints.MaximumLength);
     }

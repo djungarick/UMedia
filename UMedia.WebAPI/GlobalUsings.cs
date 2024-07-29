@@ -6,6 +6,7 @@ global using Ardalis.GuardClauses;
 global using Ardalis.Result;
 global using Ardalis.Result.AspNetCore;
 global using Asp.Versioning;
+global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.Extensions.Options;
 global using Swashbuckle.AspNetCore.Annotations;
