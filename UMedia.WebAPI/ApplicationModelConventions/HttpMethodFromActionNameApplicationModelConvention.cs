@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
+﻿using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace UMedia.WebAPI.ApplicationModelConventions;

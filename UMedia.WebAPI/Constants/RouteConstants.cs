@@ -1,4 +1,4 @@
-namespace UMedia.WebAPI.Constants;
+﻿namespace UMedia.WebAPI.Constants;
 
 internal static class RouteConstants
 {

@@ -1,4 +1,4 @@
-namespace UMedia.Application.Workspaces;
+﻿namespace UMedia.Application.Workspaces;
 
 public static class WorkspaceToDTOMapper
 {

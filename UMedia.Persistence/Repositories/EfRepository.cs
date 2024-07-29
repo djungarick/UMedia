@@ -1,4 +1,4 @@
-using Ardalis.Specification.EntityFrameworkCore;
+﻿using Ardalis.Specification.EntityFrameworkCore;
 
 namespace UMedia.Persistence.Repositories;
 

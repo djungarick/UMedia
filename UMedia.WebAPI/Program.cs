@@ -1,4 +1,4 @@
-using Ardalis.ListStartupServices;
+﻿using Ardalis.ListStartupServices;
 using UMedia.Application.Extensions;
 using UMedia.Persistence.Extensions;
 using UMedia.WebAPI.Extensions;

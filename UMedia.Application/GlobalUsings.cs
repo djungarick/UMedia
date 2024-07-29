@@ -1,4 +1,4 @@
-global using System.Linq.Expressions;
+﻿global using System.Linq.Expressions;
 global using System.Reflection;
 global using Ardalis.Result;
 global using Ardalis.SharedKernel;

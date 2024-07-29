@@ -1,4 +1,4 @@
-namespace UMedia.Domain.Entities.WorkspaceAggregate.Specifications;
+﻿namespace UMedia.Domain.Entities.WorkspaceAggregate.Specifications;
 
 public sealed class ListWorkspaceSpecification<T> : Specification<Workspace, T>
 {

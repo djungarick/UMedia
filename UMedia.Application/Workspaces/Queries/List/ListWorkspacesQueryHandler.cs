@@ -1,4 +1,4 @@
-using UMedia.Domain.Entities.WorkspaceAggregate.Specifications;
+﻿using UMedia.Domain.Entities.WorkspaceAggregate.Specifications;
 
 namespace UMedia.Application.Workspaces.Queries.List;
 

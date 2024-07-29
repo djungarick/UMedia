@@ -1,4 +1,4 @@
-namespace UMedia.Domain.Entities.Constraints;
+﻿namespace UMedia.Domain.Entities.Constraints;
 
 public static class CommonNameConstraints
 {

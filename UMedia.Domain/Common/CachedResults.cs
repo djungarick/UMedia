@@ -1,4 +1,4 @@
-namespace UMedia.Domain.Common;
+﻿namespace UMedia.Domain.Common;
 
 public static class CachedResults
 {

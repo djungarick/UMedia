@@ -1,4 +1,4 @@
-using Asp.Versioning.ApiExplorer;
+﻿using Asp.Versioning.ApiExplorer;
 
 namespace UMedia.WebAPI.OptionConfigurators;
 

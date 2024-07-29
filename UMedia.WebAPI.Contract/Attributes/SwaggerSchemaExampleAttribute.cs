@@ -1,4 +1,4 @@
-namespace UMedia.WebAPI.Contract.Attributes;
+﻿namespace UMedia.WebAPI.Contract.Attributes;
 
 [AttributeUsage(AttributeTargets.Class
     | AttributeTargets.Struct

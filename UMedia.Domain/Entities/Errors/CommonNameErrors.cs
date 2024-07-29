@@ -1,4 +1,4 @@
-namespace UMedia.Domain.Entities.Errors;
+﻿namespace UMedia.Domain.Entities.Errors;
 
 internal static class CommonNameErrors
 {

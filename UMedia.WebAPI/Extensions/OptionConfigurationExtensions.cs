@@ -1,4 +1,4 @@
-using UMedia.WebAPI.OptionConfigurators;
+﻿using UMedia.WebAPI.OptionConfigurators;
 
 namespace UMedia.WebAPI.Extensions;
 

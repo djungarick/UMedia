@@ -1,4 +1,4 @@
-namespace UMedia.Domain.Entities.WorkspaceAggregate;
+﻿namespace UMedia.Domain.Entities.WorkspaceAggregate;
 
 public sealed class Workspace : EntityBase, IAggregateRoot
 {

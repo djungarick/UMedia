@@ -1,4 +1,4 @@
-namespace UMedia.Application.Workspaces.Commands.Create;
+﻿namespace UMedia.Application.Workspaces.Commands.Create;
 
 /// <summary>
 /// Create a new workspace.

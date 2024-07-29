@@ -1,4 +1,4 @@
-global using System.Net;
+﻿global using System.Net;
 global using System.Net.Mime;
 global using System.Reflection;
 global using System.Text.Json;

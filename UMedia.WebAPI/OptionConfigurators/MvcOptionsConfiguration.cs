@@ -1,4 +1,4 @@
-using UMedia.WebAPI.ApplicationModelConventions;
+﻿using UMedia.WebAPI.ApplicationModelConventions;
 
 namespace UMedia.WebAPI.OptionConfigurators;
 

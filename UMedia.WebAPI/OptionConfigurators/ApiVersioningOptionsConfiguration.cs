@@ -1,4 +1,4 @@
-namespace UMedia.WebAPI.OptionConfigurators;
+﻿namespace UMedia.WebAPI.OptionConfigurators;
 
 internal sealed class ApiVersioningOptionsConfiguration : IConfigureOptions<ApiVersioningOptions>
 {

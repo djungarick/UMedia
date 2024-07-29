@@ -1,4 +1,4 @@
-using UMedia.Domain.Entities.WorkspaceAggregate;
+﻿using UMedia.Domain.Entities.WorkspaceAggregate;
 
 namespace UMedia.Persistence.EntityTypeConfigurations;
 

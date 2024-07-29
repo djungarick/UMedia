@@ -1,4 +1,4 @@
-namespace UMedia.WebAPI.Contract.V1_0.Workspace;
+﻿namespace UMedia.WebAPI.Contract.V1_0.Workspace;
 
 public sealed class GetWorkspaceListRequest
 {
