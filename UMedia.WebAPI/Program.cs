@@ -1,9 +1,21 @@
 ﻿using Ardalis.ListStartupServices;
+using Serilog;
 using UMedia.Application.Extensions;
 using UMedia.Persistence.Extensions;
 using UMedia.WebAPI.Extensions;
 
+Environment.SetEnvironmentVariable("UMEDIA_BASE_DIRECTORY", AppContext.BaseDirectory);
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+
+builder.Host.UseSerilog(
+    static (hostBuilderContext, loggerConfiguration) =>
+    {
+        loggerConfiguration.ReadFrom
+            .Configuration(hostBuilderContext.Configuration);
+    });
 
 builder.Services.AddUMediaApplicationLayer();
 builder.Services.AddUMediaPersistenceLayer(builder.Configuration);
@@ -25,6 +37,8 @@ builder.Services.AddApiVersioning()
     .AddApiExplorer();
 
 WebApplication app = builder.Build();
+
+app.UseForwardedHeaders();
 
 if (app.Environment.IsDevelopment())
 {
