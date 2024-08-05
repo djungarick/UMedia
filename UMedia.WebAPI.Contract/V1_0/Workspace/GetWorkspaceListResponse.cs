@@ -4,5 +4,5 @@
 public sealed class GetWorkspaceListResponse
 {
     [SwaggerSchema("The list of workspaces")]
-    public IEnumerable<WorkspaceRecord> Workspaces { get; set; } = null!;
+    public required IEnumerable<WorkspaceRecord> Workspaces { get; set; }
 }
