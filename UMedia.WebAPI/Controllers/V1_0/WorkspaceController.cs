@@ -1,4 +1,5 @@
 ﻿using UMedia.Application.Workspaces;
+using UMedia.Application.Workspaces.Commands.Update;
 using UMedia.Application.Workspaces.Queries.List;
 using UMedia.WebAPI.Contract.V1_0.Workspace;
 using UMedia.WebAPI.Mappers.V1_0;
@@ -26,6 +27,22 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
             => new GetWorkspaceListResponse
             {
                 Workspaces = _.Select(WorkspaceDTOToWorkspaceRecordMapper.Func)
+            });
+    }
+
+    [TranslateResultToActionResult]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound)]
+    [SwaggerOperation("Update the workspace")]
+    public async Task<Result<PutWorkspaceResponse>> PutWorkspaceAsync([FromQuery] int id, [FromBody] PutWorkspaceRequest request)
+    {
+        Result<WorkspaceDTO> workspace = await mediator.Send(
+            new UpdateWorkspaceCommand(id, request.Name),
+            HttpContext.RequestAborted);
+
+        return workspace.Map(static _
+            => new PutWorkspaceResponse
+            {
+                Workspace = WorkspaceDTOToWorkspaceRecordMapper.Func(_)
             });
     }
 }
