@@ -7,9 +7,9 @@ internal sealed class CreateWorkspaceCommandHandler(IRepository<Workspace> works
     public async Task<Result<int>> Handle(CreateWorkspaceCommand request, CancellationToken cancellationToken)
     {
         WorkspaceIdByNameSpecification workspaceIdByNameSpecification = new(request.Name);
-        int existingWorkspaceWithTheSameNameId = await workspaceRepository.FirstOrDefaultAsync(workspaceIdByNameSpecification, cancellationToken);
+        int existingWorkspaceWithSameNameId = await workspaceRepository.FirstOrDefaultAsync(workspaceIdByNameSpecification, cancellationToken);
 
-        Result<Workspace> workspaceCreationResult = Workspace.Create(request.Name, existingWorkspaceWithTheSameNameId == default);
+        Result<Workspace> workspaceCreationResult = Workspace.Create(request.Name, existingWorkspaceWithSameNameId == default);
         if (!workspaceCreationResult.IsSuccess)
             return workspaceCreationResult.Map(static _ => _.Id);
 
