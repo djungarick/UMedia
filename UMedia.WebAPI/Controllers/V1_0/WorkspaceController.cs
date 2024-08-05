@@ -18,7 +18,8 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
     public async Task<Result<GetWorkspaceListResponse>> GetListAsync([FromQuery] GetWorkspaceListRequest request)
     {
         Result<IEnumerable<WorkspaceDTO>> workspaceList = await mediator.Send(
-            new ListWorkspacesQuery(request.Take, request.Skip));
+            new ListWorkspacesQuery(request.Take, request.Skip),
+            HttpContext.RequestAborted);
 
         return workspaceList.Map(static _
             => new GetWorkspaceListResponse
