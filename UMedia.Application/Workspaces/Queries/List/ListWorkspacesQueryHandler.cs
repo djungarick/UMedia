@@ -8,7 +8,7 @@ internal sealed class ListWorkspacesQueryHandler(IReadRepository<Workspace> work
     {
         ListWorkspaceSpecification<WorkspaceDTO> listWorkspaceSpecification = new(request.Skip,
             request.Take,
-            WorkspaceToDTOMapper.Expression);
+            WorkspaceToWorkspaceDTOMapper.Expression);
         IEnumerable<WorkspaceDTO> workspaces = await workspaceRepository.ListAsync(listWorkspaceSpecification, cancellationToken);
 
         return Result.Success(workspaces);
