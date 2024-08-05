@@ -1,6 +1,7 @@
 ﻿using UMedia.Application.Workspaces;
 using UMedia.Application.Workspaces.Queries.List;
 using UMedia.WebAPI.Contract.V1_0.Workspace;
+using UMedia.WebAPI.Mappers.V1_0;
 
 namespace UMedia.WebAPI.Controllers.V1_0;
 
@@ -24,12 +25,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
         return workspaceList.Map(static _
             => new GetWorkspaceListResponse
             {
-                Workspaces = _.Select(static _
-                    => new GetWorkspaceListResponse.Workspace
-                    {
-                        Id = _.Id,
-                        Name = _.Name
-                    })
+                Workspaces = _.Select(WorkspaceDTOToWorkspaceRecordMapper.Func)
             });
     }
 }
