@@ -5,5 +5,5 @@ public sealed class PutWorkspaceRequest
 {
     [SwaggerSchema("The workspace new name")]
     [SwaggerSchemaExample("Some name")]
-    public string Name { get; set; } = null!;
+    public required string Name { get; set; }
 }
