@@ -17,7 +17,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
     [TranslateResultToActionResult]
-    [ExpectedFailures(ResultStatus.Invalid)]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.CriticalError)]
     [SwaggerOperation("Get the list of workspaces")]
     public async Task<Result<GetWorkspaceListResponse>> GetListAsync([FromQuery] GetWorkspaceListRequest request)
     {
@@ -34,7 +34,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
 
     [HttpPost]
     [TranslateResultToActionResult]
-    [ExpectedFailures(ResultStatus.Invalid)]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.CriticalError)]
     [SwaggerOperation("Create the workspace")]
     public async Task<Result<PostWorkspaceResponse>> PostWorkspaceAsync([FromBody] PostWorkspaceRequest request)
     {
@@ -51,7 +51,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
 
     [HttpPut]
     [TranslateResultToActionResult]
-    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound)]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
     [SwaggerOperation("Update the workspace")]
     public async Task<Result<PutWorkspaceResponse>> PutWorkspaceAsync([FromQuery] int id, [FromBody] PutWorkspaceRequest request)
     {
