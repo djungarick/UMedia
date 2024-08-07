@@ -34,7 +34,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid)]
     [SwaggerOperation("Create the workspace")]
-    public async Task<Result<PostWorkspaceResponse>> PostWorkspaceAsync(PostWorkspaceRequest request)
+    public async Task<Result<PostWorkspaceResponse>> PostWorkspaceAsync([FromBody] PostWorkspaceRequest request)
     {
         Result<int> workspaceId = await mediator.Send(
             new CreateWorkspaceCommand(request.Name),
