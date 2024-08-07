@@ -15,6 +15,7 @@ namespace UMedia.WebAPI.Controllers.V1_0;
 [Consumes(MediaTypeNames.Application.Json)]
 public sealed class WorkspaceController(IMediator mediator) : ControllerBase
 {
+    [HttpGet]
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid)]
     [SwaggerOperation("Get the list of workspaces")]
@@ -31,6 +32,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
             });
     }
 
+    [HttpPost]
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid)]
     [SwaggerOperation("Create the workspace")]
@@ -47,6 +49,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
             });
     }
 
+    [HttpPut]
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound)]
     [SwaggerOperation("Update the workspace")]

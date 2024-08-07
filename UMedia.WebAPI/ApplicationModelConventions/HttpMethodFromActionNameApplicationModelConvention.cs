@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ActionConstraints;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
+﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace UMedia.WebAPI.ApplicationModelConventions;
 
@@ -23,10 +22,12 @@ internal sealed class HttpMethodFromActionNameApplicationModelConvention : IAppl
                     {
                         action.ActionName = action.ActionName[s_httpVerbs[i].Length..];
 
-                        action.Selectors
-                            .First()
-                            .ActionConstraints
-                            .Add(new HttpMethodActionConstraint([s_httpVerbs[i]]));
+                        // TODO: Try to use an interceptor.
+                        // Unfortunately, this is incompatible with Ardalis.Result.AspNetCore. The library wants an attribute.
+                        //action.Selectors
+                        //    .First()
+                        //    .ActionConstraints
+                        //    .Add(new HttpMethodActionConstraint([s_httpVerbs[i]]));
 
                         break;
                     }
