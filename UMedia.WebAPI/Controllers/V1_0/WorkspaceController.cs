@@ -1,5 +1,6 @@
 ﻿using UMedia.Application.Workspaces;
 using UMedia.Application.Workspaces.Commands.Create;
+using UMedia.Application.Workspaces.Commands.Delete;
 using UMedia.Application.Workspaces.Commands.Update;
 using UMedia.Application.Workspaces.Queries.List;
 using UMedia.WebAPI.Contract.V1_0.Workspace;
@@ -65,4 +66,13 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
                 Workspace = WorkspaceDTOToWorkspaceRecordMapper.Func(_)
             });
     }
+
+    [HttpDelete]
+    [TranslateResultToActionResult]
+    [ExpectedFailures(ResultStatus.NotFound, ResultStatus.CriticalError)]
+    [SwaggerOperation("Delete the workspace")]
+    public async Task<Result> DeleteWorkspaceAsync([FromQuery] DeleteWorkspaceRequest request)
+        => await mediator.Send(
+            new DeleteWorkspaceCommand(request.Id),
+            HttpContext.RequestAborted);
 }
