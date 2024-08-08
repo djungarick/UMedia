@@ -6,8 +6,11 @@ internal sealed class WorkspaceEntityTypeConfiguration : IEntityTypeConfiguratio
 {
     public void Configure(EntityTypeBuilder<Workspace> builder)
     {
-        builder.Property(_ => _.Id)
+        builder.Property(static _ => _.Id)
             .UseSerialColumn();
+
+        builder.HasIndex(static _ => _.Name)
+            .IsUnique();
 
         builder.Property(static _ => _.Name)
             .HasMaxLength(CommonNameConstraints.MaximumLength);
