@@ -8,6 +8,8 @@ public sealed class Workspace : EntityBase, IAggregateRoot
 
     public string Name { get; private set; } = null!;
 
+    public List<Image> Images { get; private set; } = [];
+
     public static Result<Workspace> Create(string name, bool isNameUnique)
     {
         Result nameCheckResult = CommonNameConstraints.Check(name, isNameUnique);
@@ -29,5 +31,16 @@ public sealed class Workspace : EntityBase, IAggregateRoot
         Name = name;
 
         return CachedResults.Success;
+    }
+
+    public Result<Image> AddImage(string name, bool isNameAndWorkspaceIdUnique)
+    {
+        Result<Image> imageCreationResult = Image.Create(name, Id, isNameAndWorkspaceIdUnique);
+        if (!imageCreationResult.IsSuccess)
+            return imageCreationResult;
+
+        Images.Add(imageCreationResult.Value);
+
+        return imageCreationResult;
     }
 }

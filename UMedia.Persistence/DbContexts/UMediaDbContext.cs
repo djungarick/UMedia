@@ -7,6 +7,8 @@ internal sealed class UMediaDbContext(DbContextOptions<UMediaDbContext> options,
 {
     public DbSet<Workspace> Workspaces => Set<Workspace>();
 
+    public DbSet<Image> Images => Set<Image>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
