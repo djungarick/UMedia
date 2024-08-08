@@ -1,6 +1,6 @@
 ﻿namespace UMedia.Application.Workspaces.Commands.Delete;
 
-public sealed class DeleteWorkspaceCommandHandler(IRepository<Workspace> workspaceRepository) : ICommandHandler<DeleteWorkspaceCommand, Result>
+internal sealed class DeleteWorkspaceCommandHandler(IRepository<Workspace> workspaceRepository) : ICommandHandler<DeleteWorkspaceCommand, Result>
 {
     public async Task<Result> Handle(DeleteWorkspaceCommand request, CancellationToken cancellationToken)
     {

@@ -2,7 +2,7 @@
 
 namespace UMedia.Application.Workspaces.Commands.Update;
 
-public sealed class UpdateWorkspaceCommandHandler(IRepository<Workspace> workspaceRepository) : ICommandHandler<UpdateWorkspaceCommand, Result<WorkspaceDTO>>
+internal sealed class UpdateWorkspaceCommandHandler(IRepository<Workspace> workspaceRepository) : ICommandHandler<UpdateWorkspaceCommand, Result<WorkspaceDTO>>
 {
     public async Task<Result<WorkspaceDTO>> Handle(UpdateWorkspaceCommand request, CancellationToken cancellationToken)
     {

@@ -43,10 +43,10 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
             new CreateWorkspaceCommand(request.Name),
             HttpContext.RequestAborted);
 
-        return workspaceId.Map(_
+        return workspaceId.Map(static _
             => new PostWorkspaceResponse
             {
-                Id = workspaceId.Value
+                Id = _
             });
     }
 
