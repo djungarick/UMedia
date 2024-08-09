@@ -9,28 +9,28 @@ namespace UMedia.WebAPI.OptionConfigurators;
 
 internal sealed class SwaggerGenOptionsConfigurator(IApiVersionDescriptionProvider apiVersionDescriptionProvider) : IConfigureOptions<SwaggerGenOptions>
 {
-    public void Configure(SwaggerGenOptions options)
-    {
-        foreach (ApiVersionDescription apiVersionDescription in apiVersionDescriptionProvider.ApiVersionDescriptions)
-        {
-            options.SwaggerDoc(apiVersionDescription.GroupName,
-                new OpenApiInfo
-                {
-                    Title = "UMedia Project",
-                    Description = "UMedia Project WEB API",
-                    Version = apiVersionDescription.ApiVersion.ToString(VersioningConstants.DefaultVersionFormat)
-                });
-        }
+	public void Configure(SwaggerGenOptions options)
+	{
+		foreach (ApiVersionDescription apiVersionDescription in apiVersionDescriptionProvider.ApiVersionDescriptions)
+		{
+			options.SwaggerDoc(apiVersionDescription.GroupName,
+				new OpenApiInfo
+				{
+					Title = "UMedia Project",
+					Description = "UMedia Project WEB API",
+					Version = apiVersionDescription.ApiVersion.ToString(VersioningConstants.DefaultVersionFormat)
+				});
+		}
 
-        options.EnableAnnotations();
-        options.SupportNonNullableReferenceTypes();
+		options.EnableAnnotations();
+		options.SupportNonNullableReferenceTypes();
 
-        // TODO: Check what it does.
-        options.OperationFilter<SwaggerDefaultValuesOperationFilter>();
+		// TODO: Check what it does.
+		options.OperationFilter<SwaggerDefaultValuesOperationFilter>();
 
-        options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
-        options.OperationFilter<SecurityRequirementsOperationFilter>();
+		options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
+		options.OperationFilter<SecurityRequirementsOperationFilter>();
 
-        options.SchemaFilter<SwaggerSchemaExampleFilter>();
-    }
+		options.SchemaFilter<SwaggerSchemaExampleFilter>();
+	}
 }
