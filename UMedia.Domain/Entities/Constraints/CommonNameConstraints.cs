@@ -10,6 +10,7 @@ public static class CommonNameConstraints
     private static readonly Result s_startsWithWhiteSpaceResult = Result.Invalid(CommonNameErrors.StartsWithWhiteSpace);
     private static readonly Result s_LengthIsOutOfRangeResult = Result.Invalid(CommonNameErrors.LengthIsOutOfRange);
 
+#pragma warning disable IDE0046 // Convert to conditional expression
     public static Result Check(string? name, bool isNameUnique)
     {
         if (!isNameUnique)
@@ -26,4 +27,5 @@ public static class CommonNameConstraints
 
         return CachedResults.Success;
     }
+#pragma warning restore IDE0046 // Convert to conditional expression
 }

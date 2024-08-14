@@ -14,8 +14,10 @@ internal sealed class SwaggerSchemaExampleFilter : ISchemaFilter
             .FirstOrDefault();
 
         if (swaggerSchemaExampleAttribute is not null)
+        {
             schema.Example = swaggerSchemaExampleAttribute.Example is null
                 ? new OpenApiNull()
                 : new OpenApiString(swaggerSchemaExampleAttribute.Example);
+        }
     }
 }

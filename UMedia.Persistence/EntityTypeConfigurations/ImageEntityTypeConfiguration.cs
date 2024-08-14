@@ -6,13 +6,13 @@ internal sealed class ImageEntityTypeConfiguration : IEntityTypeConfiguration<Im
 {
     public void Configure(EntityTypeBuilder<Image> builder)
     {
-        builder.Property(static _ => _.Id)
+        _ = builder.Property(static _ => _.Id)
             .UseSerialColumn();
 
-        builder.HasIndex(static _ => _.Name)
+        _ = builder.HasIndex(static _ => _.Name)
             .IsUnique();
 
-        builder.Property(static _ => _.Name)
+        _ = builder.Property(static _ => _.Name)
             .HasMaxLength(CommonNameConstraints.MaximumLength);
     }
 }

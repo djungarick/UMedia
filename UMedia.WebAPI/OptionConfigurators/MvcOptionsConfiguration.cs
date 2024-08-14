@@ -9,7 +9,7 @@ internal sealed class MvcOptionsConfiguration : IConfigureOptions<MvcOptions>
         options.Conventions.Add(
             new HttpMethodFromActionNameApplicationModelConvention());
 
-        options.AddResultConvention(static resultStatusMap
+        _ = options.AddResultConvention(static resultStatusMap
             => resultStatusMap.AddDefaultMap()
                 .For(ResultStatus.Ok, HttpStatusCode.OK, resultStatusOptions
                     => resultStatusOptions.For(HttpMethod.Post.Method, HttpStatusCode.Created)

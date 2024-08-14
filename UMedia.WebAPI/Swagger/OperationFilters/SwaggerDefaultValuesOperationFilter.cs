@@ -20,8 +20,10 @@ internal sealed class SwaggerDefaultValuesOperationFilter : IOperationFilter
             OpenApiResponse response = operation.Responses[responseKey];
 
             foreach (string? contentType in response.Content.Keys)
+            {
                 if (!responseType.ApiResponseFormats.Any(_ => _.MediaType == contentType))
-                    response.Content.Remove(contentType);
+                    _ = response.Content.Remove(contentType);
+            }
         }
 
         if (operation.Parameters is null)
@@ -34,7 +36,7 @@ internal sealed class SwaggerDefaultValuesOperationFilter : IOperationFilter
 
             parameter.Description ??= description.ModelMetadata?.Description;
 
-            if (parameter.Schema.Default is null && description.DefaultValue is not null)
+            if (parameter.Schema.Default is null && description is { DefaultValue: not null, ModelMetadata: not null })
             {
                 string json = JsonSerializer.Serialize(
                     description.DefaultValue,
