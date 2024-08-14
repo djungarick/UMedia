@@ -18,7 +18,7 @@ internal static class OptionConfigurationExtensions
                         && s_optionConfiguratorTypes.Contains(i.GetGenericTypeDefinition())));
 
         foreach (Type optionToConfigure in optionsToConfigure)
-            services.ConfigureOptions(optionToConfigure);
+            _ = services.ConfigureOptions(optionToConfigure);
 
         return services;
     }

@@ -12,6 +12,7 @@ public sealed class Image : EntityBase
 
     public Workspace Workspace { get; private set; } = null!;
 
+#pragma warning disable IDE0046 // Convert to conditional expression
     public static Result<Image> Create(string name, int workspaceId, bool isNameAndWorkspaceIdUnique)
     {
         Result nameCheckResult = CommonNameConstraints.Check(name, isNameAndWorkspaceIdUnique);
@@ -24,6 +25,7 @@ public sealed class Image : EntityBase
             WorkspaceId = workspaceId
         };
     }
+#pragma warning restore IDE0046 // Convert to conditional expression
 
     public Result UpdateName(string name, bool isNameAndWorkspaceIdUnique)
     {

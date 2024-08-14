@@ -5,9 +5,9 @@ internal sealed class GetWorkspaceQueryHandler(IReadRepository<Workspace> worksp
     public async Task<Result<WorkspaceDTO>> Handle(GetWorkspaceQuery request, CancellationToken cancellationToken)
     {
         Workspace? workspace = await workspaceRepository.GetByIdAsync(request.Id, cancellationToken);
-        if (workspace is null)
-            return CachedResults.NotFound;
 
-        return WorkspaceToWorkspaceDTOMapper.Func(workspace);
+        return workspace is null
+            ? CachedResults.NotFound
+            : WorkspaceToWorkspaceDTOMapper.Func(workspace);
     }
 }

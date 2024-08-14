@@ -20,8 +20,10 @@ internal sealed class SwaggerDefaultValuesOperationFilter : IOperationFilter
             OpenApiResponse response = operation.Responses[responseKey];
 
             foreach (string? contentType in response.Content.Keys)
+            {
                 if (!responseType.ApiResponseFormats.Any(_ => _.MediaType == contentType))
-                    response.Content.Remove(contentType);
+                    _ = response.Content.Remove(contentType);
+            }
         }
 
         if (operation.Parameters is null)

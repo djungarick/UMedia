@@ -10,10 +10,7 @@ internal sealed class UMediaDbContext(DbContextOptions<UMediaDbContext> options,
     public DbSet<Image> Images => Set<Image>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(WorkspaceEntityTypeConfiguration).Assembly);
-    }
+        => modelBuilder.ApplyConfigurationsFromAssembly(typeof(WorkspaceEntityTypeConfiguration).Assembly);
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
@@ -23,7 +20,7 @@ internal sealed class UMediaDbContext(DbContextOptions<UMediaDbContext> options,
         if (domainEventDispatcher is null)
             return result;
 
-        var entitiesWithEvents = ChangeTracker.Entries<EntityBase>()
+        EntityBase[] entitiesWithEvents = ChangeTracker.Entries<EntityBase>()
             .Select(static _ => _.Entity)
             .Where(static _ => _.DomainEvents.Any())
             .ToArray();

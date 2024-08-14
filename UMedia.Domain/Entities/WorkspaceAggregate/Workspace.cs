@@ -10,6 +10,7 @@ public sealed class Workspace : EntityBase, IAggregateRoot
 
     public List<Image> Images { get; private set; } = [];
 
+#pragma warning disable IDE0046 // Convert to conditional expression
     public static Result<Workspace> Create(string name, bool isNameUnique)
     {
         Result nameCheckResult = CommonNameConstraints.Check(name, isNameUnique);
@@ -21,6 +22,7 @@ public sealed class Workspace : EntityBase, IAggregateRoot
             Name = name
         };
     }
+#pragma warning restore IDE0046 // Convert to conditional expression
 
     public Result UpdateName(string name, bool isNameUnique)
     {

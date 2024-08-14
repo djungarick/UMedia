@@ -8,14 +8,11 @@ Environment.SetEnvironmentVariable("UMEDIA_BASE_DIRECTORY", AppContext.BaseDirec
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+#pragma warning disable IDE0058 // Expression value is never used
 builder.Logging.ClearProviders();
 
-builder.Host.UseSerilog(
-    static (hostBuilderContext, loggerConfiguration) =>
-    {
-        loggerConfiguration.ReadFrom
-            .Configuration(hostBuilderContext.Configuration);
-    });
+builder.Host.UseSerilog(static (hostBuilderContext, loggerConfiguration)
+    => loggerConfiguration.ReadFrom.Configuration(hostBuilderContext.Configuration));
 
 builder.Services.AddUMediaApplicationLayer();
 builder.Services.AddUMediaPersistenceLayer(builder.Configuration);
@@ -56,3 +53,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+#pragma warning restore IDE0058 // Expression value is never used
