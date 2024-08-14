@@ -6,7 +6,7 @@ name: .NET build
 on: [push]
 
 jobs:
-  dotnet-format:
+  dotnet-build:
 
     runs-on: ubuntu-latest
     

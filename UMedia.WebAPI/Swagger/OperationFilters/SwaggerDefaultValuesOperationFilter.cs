@@ -34,7 +34,7 @@ internal sealed class SwaggerDefaultValuesOperationFilter : IOperationFilter
 
             parameter.Description ??= description.ModelMetadata?.Description;
 
-            if (parameter.Schema.Default is null && description.DefaultValue is not null)
+            if (parameter.Schema.Default is null && description is { DefaultValue: not null, ModelMetadata: not null })
             {
                 string json = JsonSerializer.Serialize(
                     description.DefaultValue,
