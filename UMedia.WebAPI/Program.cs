@@ -27,7 +27,6 @@ builder.Services.Configure<ServiceConfig>(options
     });
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApiVersioning()
     .AddMvc()
