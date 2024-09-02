@@ -19,7 +19,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
     [TranslateResultToActionResult]
-    [ExpectedFailures(ResultStatus.NotFound, ResultStatus.CriticalError)]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
     [SwaggerOperation("Get the workspace")]
     public async Task<Result<GetWorkspaceResponse>> GetAsync([FromQuery] GetWorkspaceRequest request)
     {
@@ -41,7 +41,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
     public async Task<Result<GetWorkspaceListResponse>> GetListAsync([FromQuery] GetWorkspaceListRequest request)
     {
         Result<IEnumerable<WorkspaceDTO>> workspaceList = await mediator.Send(
-            new ListWorkspacesQuery(request.Take, request.Skip),
+            new ListWorkspacesQuery(request.Skip, request.Take),
             HttpContext.RequestAborted);
 
         return workspaceList.Map(static _
@@ -87,7 +87,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
 
     [HttpDelete]
     [TranslateResultToActionResult]
-    [ExpectedFailures(ResultStatus.NotFound, ResultStatus.CriticalError)]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
     [SwaggerOperation("Delete the workspace")]
     public async Task<Result> DeleteWorkspaceAsync([FromQuery] DeleteWorkspaceRequest request)
         => await mediator.Send(

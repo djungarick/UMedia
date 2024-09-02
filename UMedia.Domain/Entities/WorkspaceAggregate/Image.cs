@@ -12,21 +12,6 @@ public sealed class Image : EntityBase
 
     public Workspace Workspace { get; private set; } = null!;
 
-#pragma warning disable IDE0046 // Convert to conditional expression
-    public static Result<Image> Create(string name, int workspaceId, bool isNameAndWorkspaceIdUnique)
-    {
-        Result nameCheckResult = CommonNameConstraints.Check(name, isNameAndWorkspaceIdUnique);
-        if (!nameCheckResult.IsSuccess)
-            return nameCheckResult;
-
-        return new Image
-        {
-            Name = name,
-            WorkspaceId = workspaceId
-        };
-    }
-#pragma warning restore IDE0046 // Convert to conditional expression
-
     public Result UpdateName(string name, bool isNameAndWorkspaceIdUnique)
     {
         Result nameCheckResult = CommonNameConstraints.Check(name, isNameAndWorkspaceIdUnique);
@@ -48,4 +33,19 @@ public sealed class Image : EntityBase
 
         return CachedResults.Success;
     }
+
+#pragma warning disable IDE0046 // Convert to conditional expression
+    internal static Result<Image> Create(string name, int workspaceId, bool isNameAndWorkspaceIdUnique)
+    {
+        Result nameCheckResult = CommonNameConstraints.Check(name, isNameAndWorkspaceIdUnique);
+        if (!nameCheckResult.IsSuccess)
+            return nameCheckResult;
+
+        return new Image
+        {
+            Name = name,
+            WorkspaceId = workspaceId
+        };
+    }
+#pragma warning restore IDE0046 // Convert to conditional expression
 }
