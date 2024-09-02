@@ -2,13 +2,15 @@
 
 public sealed class Workspace : EntityBase, IAggregateRoot
 {
+    private readonly List<Image> _images = [];
+
     private Workspace()
     {
     }
 
     public string Name { get; private set; } = null!;
 
-    public List<Image> Images { get; private set; } = [];
+    public IReadOnlyCollection<Image> Images => _images;
 
 #pragma warning disable IDE0046 // Convert to conditional expression
     public static Result<Workspace> Create(string name, bool isNameUnique)
@@ -41,7 +43,7 @@ public sealed class Workspace : EntityBase, IAggregateRoot
         if (!imageCreationResult.IsSuccess)
             return imageCreationResult;
 
-        Images.Add(imageCreationResult.Value);
+        _images.Add(imageCreationResult.Value);
 
         return imageCreationResult;
     }
