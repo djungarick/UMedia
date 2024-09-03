@@ -1,5 +1,6 @@
 ﻿using UMedia.Application.Images;
 using UMedia.Application.Images.Commands.Create;
+using UMedia.Application.Images.Commands.Delete;
 using UMedia.Application.Images.Queries.List;
 using UMedia.WebAPI.Contract.V1_0.Image;
 using UMedia.WebAPI.Mappers.V1_0;
@@ -47,4 +48,13 @@ public sealed class ImageController(IMediator mediator) : ControllerBase
                 Id = _
             });
     }
+
+    [HttpDelete]
+    [TranslateResultToActionResult]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
+    [SwaggerOperation("Delete the image")]
+    public async Task<Result> DeleteAsync([FromQuery] DeleteImageRequest request)
+        => await mediator.Send(
+            new DeleteImageCommand(request.Id),
+            HttpContext.RequestAborted);
 }

@@ -47,4 +47,15 @@ public sealed class Workspace : EntityBase, IAggregateRoot
 
         return imageCreationResult;
     }
+
+    public Result DeleteImage(int id)
+    {
+        Image? imageToDelete = _images.Find(_ => _.Id == id);
+        if (imageToDelete is null)
+            return CachedResults.NotFound;
+
+        _ = _images.Remove(imageToDelete);
+
+        return CachedResults.Success;
+    }
 }
