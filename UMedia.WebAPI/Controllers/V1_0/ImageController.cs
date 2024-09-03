@@ -1,4 +1,5 @@
 ﻿using UMedia.Application.Images;
+using UMedia.Application.Images.Commands.Create;
 using UMedia.Application.Images.Queries.List;
 using UMedia.WebAPI.Contract.V1_0.Image;
 using UMedia.WebAPI.Mappers.V1_0;
@@ -27,6 +28,23 @@ public sealed class ImageController(IMediator mediator) : ControllerBase
             => new GetImageListResponse
             {
                 Images = _.Select(ImageDTOToImageRecordMapper.Func)
+            });
+    }
+
+    [HttpPost]
+    [TranslateResultToActionResult]
+    [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
+    [SwaggerOperation("Create the image")]
+    public async Task<Result<PostImageResponse>> PostAsync([FromQuery] PostImageRequest request)
+    {
+        Result<int> imageId = await mediator.Send(
+            new CreateImageCommand(request.WorkspaceId, request.Name),
+            HttpContext.RequestAborted);
+
+        return imageId.Map(static _
+            => new PostImageResponse
+            {
+                Id = _
             });
     }
 }

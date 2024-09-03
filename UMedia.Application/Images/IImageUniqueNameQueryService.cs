@@ -1,0 +1,6 @@
+﻿namespace UMedia.Application.Images;
+
+public interface IImageUniqueNameQueryService
+{
+    public Task<bool> CheckAsync(string name, int workspaceId, CancellationToken cancellationToken = default);
+}

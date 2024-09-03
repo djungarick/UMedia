@@ -1,4 +1,6 @@
-﻿using UMedia.Application.Images.Queries.List;
+﻿using UMedia.Application.Images;
+using UMedia.Application.Images.Queries.List;
+using UMedia.Persistence.Queries.Images;
 using UMedia.Persistence.Queries.Images.List;
 using UMedia.Persistence.Repositories;
 
@@ -19,5 +21,6 @@ public static class LayerAddingExtensions
             )
             .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
             .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>))
-            .AddScoped<IListImagesQueryService, ListImagesQueryService>();
+            .AddScoped<IListImagesQueryService, ListImagesQueryService>()
+            .AddScoped<IImageUniqueNameQueryService, ImageUniqueNameQueryService>();
 }
