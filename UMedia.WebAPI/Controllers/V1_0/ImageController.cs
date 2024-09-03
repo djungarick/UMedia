@@ -36,7 +36,7 @@ public sealed class ImageController(IMediator mediator) : ControllerBase
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
     [SwaggerOperation("Create the image")]
-    public async Task<Result<PostImageResponse>> PostAsync([FromQuery] PostImageRequest request)
+    public async Task<Result<PostImageResponse>> PostAsync([FromBody] PostImageRequest request)
     {
         Result<int> imageId = await mediator.Send(
             new CreateImageCommand(request.WorkspaceId, request.Name),
