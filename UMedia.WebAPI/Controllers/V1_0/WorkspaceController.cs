@@ -55,7 +55,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid, ResultStatus.CriticalError)]
     [SwaggerOperation("Create the workspace")]
-    public async Task<Result<PostWorkspaceResponse>> PostWorkspaceAsync([FromBody] PostWorkspaceRequest request)
+    public async Task<Result<PostWorkspaceResponse>> PostAsync([FromBody] PostWorkspaceRequest request)
     {
         Result<int> workspaceId = await mediator.Send(
             new CreateWorkspaceCommand(request.Name),
@@ -72,7 +72,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
     [SwaggerOperation("Update the workspace")]
-    public async Task<Result<PutWorkspaceResponse>> PutWorkspaceAsync([FromQuery] int id, [FromBody] PutWorkspaceRequest request)
+    public async Task<Result<PutWorkspaceResponse>> PutAsync([FromQuery] int id, [FromBody] PutWorkspaceRequest request)
     {
         Result<WorkspaceDTO> workspace = await mediator.Send(
             new UpdateWorkspaceCommand(id, request.Name),
@@ -89,7 +89,7 @@ public sealed class WorkspaceController(IMediator mediator) : ControllerBase
     [TranslateResultToActionResult]
     [ExpectedFailures(ResultStatus.Invalid, ResultStatus.NotFound, ResultStatus.CriticalError)]
     [SwaggerOperation("Delete the workspace")]
-    public async Task<Result> DeleteWorkspaceAsync([FromQuery] DeleteWorkspaceRequest request)
+    public async Task<Result> DeleteAsync([FromQuery] DeleteWorkspaceRequest request)
         => await mediator.Send(
             new DeleteWorkspaceCommand(request.Id),
             HttpContext.RequestAborted);
