@@ -1,12 +1,17 @@
 ﻿global using System.Linq.Expressions;
+global using System.Reflection;
 global using Ardalis.GuardClauses;
 global using Ardalis.Result;
 global using Ardalis.SharedKernel;
+global using FluentValidation;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Options;
 global using UMedia.Domain.Common;
 global using UMedia.Domain.Entities.Constraints;
+global using UMedia.Domain.Extensions;
 global using UMedia.Persistence.DbContexts;
 global using UMedia.Persistence.Extensions;
+global using UMedia.Persistence.Options;

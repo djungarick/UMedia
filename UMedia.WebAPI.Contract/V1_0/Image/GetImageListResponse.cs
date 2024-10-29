@@ -4,5 +4,5 @@
 public sealed class GetImageListResponse
 {
     [SwaggerSchema("The list of images")]
-    public required IEnumerable<ImageRecord> Images { get; set; }
+    public required IEnumerable<ImageShortInfoRecord> Images { get; set; }
 }

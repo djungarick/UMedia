@@ -10,4 +10,7 @@ public sealed class PostImageRequest
     [SwaggerSchema("The image name")]
     [SwaggerSchemaExample("Some name")]
     public required string Name { get; set; }
+
+    [SwaggerSchema("The image itself")]
+    public required IFormFile File { get; set; }
 }

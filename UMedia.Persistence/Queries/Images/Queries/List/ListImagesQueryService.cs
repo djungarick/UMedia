@@ -1,22 +1,20 @@
-﻿using UMedia.Application.Images.Queries.List;
+﻿using UMedia.Application.Images.Queries.ListShortInfo;
 using UMedia.Domain.Entities.WorkspaceAggregate;
 
-namespace UMedia.Persistence.Queries.Images.List;
+namespace UMedia.Persistence.Queries.Images.Queries.List;
 
 internal sealed class ListImagesQueryService(UMediaDbContext uMediaDbContext) : IListImagesQueryService
 {
-    public async Task<Result<IEnumerable<T>>> ListReadOnlyAsync<T>(int workspaceId,
+    public async Task<Result<IEnumerable<Image>>> ListReadOnlyAsync(int workspaceId,
         int? skip,
         int? take,
-        Expression<Func<Image, T>> converter,
         CancellationToken cancellationToken)
     {
-        List<T> result = await uMediaDbContext.Images
+        List<Image> result = await uMediaDbContext.Images
             .AsNoTracking()
             .Where(_ => _.WorkspaceId == workspaceId)
             .CustomSkip(skip)
             .CustomTake(take)
-            .Select(converter)
             .ToListAsync(cancellationToken);
 
         return result.Count < 1 && !await uMediaDbContext.Workspaces.AnyAsync(_ => _.Id == workspaceId, cancellationToken)

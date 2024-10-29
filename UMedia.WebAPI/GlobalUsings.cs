@@ -1,4 +1,5 @@
-﻿global using System.Linq.Expressions;
+﻿global using System.Collections.Immutable;
+global using System.Linq.Expressions;
 global using System.Net;
 global using System.Net.Mime;
 global using System.Reflection;
