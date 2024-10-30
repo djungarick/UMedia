@@ -7,7 +7,5 @@ internal sealed class CreateImageFullQueryService : ICreateImageFullQueryService
 {
     // TODO: Add the Minio S3 storage.
     public Task CreateAsync(ImageFull imageFull, CancellationToken cancellationToken)
-    {
-        return Task.CompletedTask;
-    }
+        => Task.CompletedTask;
 }

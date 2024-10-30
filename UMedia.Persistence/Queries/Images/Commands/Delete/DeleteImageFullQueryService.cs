@@ -6,7 +6,5 @@ internal sealed class DeleteImageFullQueryService : IDeleteImageFullQueryService
 {
     // TODO: Add the Minio S3 storage.
     public Task<long> DeleteAsync(int imageId, CancellationToken cancellationToken)
-    {
-        return Task.FromResult(0L);
-    }
+        => Task.FromResult(0L);
 }

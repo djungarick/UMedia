@@ -8,5 +8,5 @@ global using UMedia.Application.Interfaces.Services;
 global using UMedia.Domain.Common;
 global using UMedia.Domain.Entities.WorkspaceAggregate;
 global using UMedia.Domain.Extensions;
-global using Image = UMedia.Domain.Entities.WorkspaceAggregate.Image;
 global using SixLaborsImage = SixLabors.ImageSharp.Image;
+global using Image = UMedia.Domain.Entities.WorkspaceAggregate.Image;
