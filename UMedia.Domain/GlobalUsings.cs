@@ -2,6 +2,10 @@
 global using Ardalis.Result;
 global using Ardalis.SharedKernel;
 global using Ardalis.Specification;
+global using FluentValidation;
+global using FluentValidation.Results;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Options;
 global using UMedia.Domain.Common;
 global using UMedia.Domain.Entities.Constraints;
 global using UMedia.Domain.Entities.Errors;

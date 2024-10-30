@@ -27,7 +27,6 @@ builder.Services.Configure<ServiceConfig>(options
     });
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApiVersioning()
     .AddMvc()
@@ -39,12 +38,12 @@ app.UseForwardedHeaders();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-
     app.UseDeveloperExceptionPage();
     app.UseShowAllServicesMiddleware();
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

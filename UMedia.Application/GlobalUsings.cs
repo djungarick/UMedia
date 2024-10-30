@@ -1,6 +1,12 @@
-﻿global using System.Linq.Expressions;
+﻿global using System.Collections.Immutable;
+global using System.Linq.Expressions;
 global using System.Reflection;
 global using Ardalis.Result;
 global using Ardalis.SharedKernel;
+global using Microsoft.Extensions.Logging;
+global using UMedia.Application.Interfaces.Services;
 global using UMedia.Domain.Common;
 global using UMedia.Domain.Entities.WorkspaceAggregate;
+global using UMedia.Domain.Extensions;
+global using SixLaborsImage = SixLabors.ImageSharp.Image;
+global using Image = UMedia.Domain.Entities.WorkspaceAggregate.Image;
